@@ -46,7 +46,7 @@
         <div class="col-12">
           <label for="enterTeam">Enter number of teams</label>
           <input id="enterTeam" type="number" />
-          <button class="btn-sm btn-dark" onclick="TeamDivision()">
+          <button class="btn-sm btn-dark" onclick="teamDivision()">
             Set Number of Teams
           </button>
         </div>
@@ -64,11 +64,7 @@
       </div>
       <div class="row">
         <div class="col-12 mb-5">
-          <button
-            id="assignBtn"
-            class="btn-lg btn-success"
-            onclick="assignMembersToTeams()"
-          >
+          <button id="assignBtn" class="btn-lg btn-success" onclick="">
             ASSIGN
           </button>
         </div>
@@ -103,24 +99,25 @@
         newInput.focus();
       };
 
-      const TeamDivision = function () {
+      const teamDivision = function () {
         let newNumber = document.getElementById("eneterTeam");
         listOfTeams = newNumber.value;
         let teamNumContainer = document.getElementById("teamNumber");
         let teamLiContainer = document.createElement("div");
         teamLiContainer.classList.add("row");
         teamNumContainer.appendChild(teamLiContainer);
-        for (let i = 0; i < newNumber; i++) {
+        for (let i = 0; i < listOfTeams; i++) {
           let individualTeamDiv = document.createElement("div");
-          individualTeamDiv.classList.add(`col-${Math.floor(12 / newNumber)}`);
-
-          teamLiContainer.appendChild(individualTeamDiv);
+          individualTeamDiv.classList.add(
+            `col-${Math.floor(12 / listOfTeams)}`
+          );
           teamLiContainer.appendChild(individualTeamDiv);
           let teamName = document.createElement("p");
           teamName.innerText = `Team ${i + 1}`;
           teamName.classList.add("bg-dark");
           teamName.classList.add("text-light");
           individualTeamDiv.appendChild(teamName);
+
           let teamList = document.createElement("ul");
           teamList.setAttribute("id", `team${i + 1}`);
           teamList.classList.add("list-group");
