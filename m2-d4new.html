@@ -46,28 +46,25 @@
         <div class="col-12">
           <label for="enterTeam">Enter number of teams</label>
           <input id="enterTeam" type="number" />
-          <button class="btn-sm btn-dark" onclick="teamDivision()">
+          <button class="btn-sm btn-dark" onclick="createTeams()">
             Set Number of Teams
           </button>
         </div>
       </div>
-      <div class="row mt-5 ml-5 mr-5 mb-5">
-        <div class="col-12 col-md-6">
-          <p class="bg-dark text-light text-center">
+      <button id="assignBtn" class="btn-lg btn-success" onclick="">
+        ASSIGN
+      </button>
+      <div class="row my-5">
+        <div class="col p-0">
+          <p class="bg-dark text-light text-center w-100">
             <strong>List of Members</strong>
           </p>
           <ul id="memberList" class="list-group"></ul>
         </div>
-        <div id="teamNumber" class="col-12 col-md-6 justify-content-end">
-          <p class="bg-dark text-light"><strong>Teams</strong></p>
-        </div>
       </div>
-      <div class="row">
-        <div class="col-12 mb-5">
-          <button id="assignBtn" class="btn-lg btn-success" onclick="">
-            ASSIGN
-          </button>
-        </div>
+
+      <div id="teamList" class="row my-5">
+        <p class="bg-dark text-light w-100"><strong>Teams</strong></p>
       </div>
     </div>
     <script
@@ -83,8 +80,6 @@
     <script>
       let listOfNames = [];
 
-      let listOfTeams = 0;
-
       const addNames = function () {
         let newInput = document.getElementById("enterName");
         listOfNames.push(newInput.value);
@@ -98,42 +93,20 @@
         newInput.focus();
       };
 
-      const teamDivision = function () {
-        let newNumber = document.getElementById("enterTeam");
-        listOfTeams = newNumber.value;
+      // window.onload = function () {
+      //   createTeams();
+      // };
+      let numberOfTeams = document.querySelector("#enterTeam");
+      console.log(numberOfTeams);
+      let teamNumContainer = document.querySelector("#teamList");
 
-        let teamNumContainer = document.getElementById("teamNumber");
-        let teamLiContainer = document.createElement("div");
-
-        teamLiContainer.classList.add("row");
-        teamNumContainer.appendChild(teamLiContainer);
-        // for (let i = 0; i < listOfTeams; i++) {
-        //   let individualTeamDiv = document.createElement("div");
-        //   individualTeamDiv.classList.add(
-        //     `col-${Math.floor(12 / listOfTeams)}`
-        //   );
-        //   teamLiContainer.appendChild(individualTeamDiv);
-        //   let teamName = document.createElement("p");
-        //   teamName.innerText = `Team ${i + 1}`;
-        //   teamName.classList.add("bg-dark");
-        //   teamName.classList.add("text-light");
-        //   individualTeamDiv.appendChild(teamName);
-
-        //   let teamList = document.createElement("ul");
-        //   teamList.setAttribute("id", `team${i + 1}`);
-        //   teamList.classList.add("list-group");
-        //   individualTeamDiv.appendChild(teamList);
-        //   let removeButton = document.createElement("button");
-        //   removeButton.innerText = "Remove Last Member";
-        //   removeButton.classList.add("btn-sm");
-        //   removeButton.classList.add("btn-danger");
-        //   removeButton.classList.add("mt-3");
-        //   removeButton.addEventListener("click", function () {
-        //     addedNames.push(teamList.lastChild.innerText);
-        //     teamList.removeChild(teamList.lastChild);
-        //   });
-        //   individualTeamDiv.appendChild(removeButton);
-        // }
+      const createTeams = function () {
+        for (i = 0; i < numberOfTeams.value; i++) {
+          teamNumContainer.innerHTML += `<div class="col-4">
+          <h4> Team ${i + 1}</h4>
+          <ul class="list-gr bg-danger"></ul>
+          </div>`;
+        }
       };
     </script>
   </body>
