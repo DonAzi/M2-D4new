@@ -92,7 +92,6 @@
         let unorderedlistNames = document.getElementById("memberList");
         let newMemberForList = document.createElement("li");
         newMemberForList.classList.add("class-name-list");
-        newMemberForList.classList.add("class-name-second-list");
         newMemberForList.innerText = newInput.value;
         unorderedlistNames.appendChild(newMemberForList);
         newInput.value = "";
@@ -100,39 +99,41 @@
       };
 
       const teamDivision = function () {
-        let newNumber = document.getElementById("eneterTeam");
+        let newNumber = document.getElementById("enterTeam");
         listOfTeams = newNumber.value;
+
         let teamNumContainer = document.getElementById("teamNumber");
         let teamLiContainer = document.createElement("div");
+
         teamLiContainer.classList.add("row");
         teamNumContainer.appendChild(teamLiContainer);
-        for (let i = 0; i < listOfTeams; i++) {
-          let individualTeamDiv = document.createElement("div");
-          individualTeamDiv.classList.add(
-            `col-${Math.floor(12 / listOfTeams)}`
-          );
-          teamLiContainer.appendChild(individualTeamDiv);
-          let teamName = document.createElement("p");
-          teamName.innerText = `Team ${i + 1}`;
-          teamName.classList.add("bg-dark");
-          teamName.classList.add("text-light");
-          individualTeamDiv.appendChild(teamName);
+        // for (let i = 0; i < listOfTeams; i++) {
+        //   let individualTeamDiv = document.createElement("div");
+        //   individualTeamDiv.classList.add(
+        //     `col-${Math.floor(12 / listOfTeams)}`
+        //   );
+        //   teamLiContainer.appendChild(individualTeamDiv);
+        //   let teamName = document.createElement("p");
+        //   teamName.innerText = `Team ${i + 1}`;
+        //   teamName.classList.add("bg-dark");
+        //   teamName.classList.add("text-light");
+        //   individualTeamDiv.appendChild(teamName);
 
-          let teamList = document.createElement("ul");
-          teamList.setAttribute("id", `team${i + 1}`);
-          teamList.classList.add("list-group");
-          individualTeamDiv.appendChild(teamList);
-          let removeButton = document.createElement("button");
-          removeButton.innerText = "Remove Last Member";
-          removeButton.classList.add("btn-sm");
-          removeButton.classList.add("btn-danger");
-          removeButton.classList.add("mt-3");
-          removeButton.addEventListener("click", function () {
-            addedNames.push(teamList.lastChild.innerText);
-            teamList.removeChild(teamList.lastChild);
-          });
-          individualTeamDiv.appendChild(removeButton);
-        }
+        //   let teamList = document.createElement("ul");
+        //   teamList.setAttribute("id", `team${i + 1}`);
+        //   teamList.classList.add("list-group");
+        //   individualTeamDiv.appendChild(teamList);
+        //   let removeButton = document.createElement("button");
+        //   removeButton.innerText = "Remove Last Member";
+        //   removeButton.classList.add("btn-sm");
+        //   removeButton.classList.add("btn-danger");
+        //   removeButton.classList.add("mt-3");
+        //   removeButton.addEventListener("click", function () {
+        //     addedNames.push(teamList.lastChild.innerText);
+        //     teamList.removeChild(teamList.lastChild);
+        //   });
+        //   individualTeamDiv.appendChild(removeButton);
+        // }
       };
     </script>
   </body>
